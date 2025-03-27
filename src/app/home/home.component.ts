@@ -18,14 +18,15 @@ export class HomeComponent implements OnInit {
   onSignup(userobj){
     this.ds.createUser(userobj).subscribe(
       res=>{
-        if(res.message==="User created"){
-          alert("User created")
+        if(res.message==="Registration successful"){
+          //alert("Regestration successfull")
+          this.toastr.success("Registration successful", "Success");
           //navigate to login component
-            this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/login')
         }
         else{
           //alert(res.message)
-          this.toastr.info(res.message,"Error")
+          this.toastr.warning(res.message, "Notice");
         }
       },
       err=>{
